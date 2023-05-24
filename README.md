@@ -1,6 +1,6 @@
-# dash-practice
+# py-frameworks
 
-This README guide provides step-by-step instructions on how to set up a repository for practicing Dash, a web application framework in Python, using a virtual environment (venv). The repository will serve as a dedicated workspace to explore and develop Dash applications.
+This README guide provides step-by-step instructions on how to set up a repository for practicing with Python frameworks, using a virtual environment (venv). The repository will serve as a dedicated workspace to explore and develop Dash applications.
 
 ## Prerequisites
 
