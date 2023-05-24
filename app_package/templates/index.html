@@ -4,6 +4,10 @@
         <title>{{title}}- Flask</title>
     </head>
     <body>
+        {% if user %}
         <h1>Hello, {{user.username}}!</h1>
+        {% else %}
+        <h1>Hello there!</h1>
+        {% endif %}
     </body>
 </html>
