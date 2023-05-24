@@ -31,4 +31,6 @@ def login():
         flash('Login requested for user {}, remember_me={}'.format(
             form.username.data, form.remember_me.data))
         return redirect('/index')
+    else: 
+        flash('Login failed.')
     return render_template('login.html', title='Login', form=form)
