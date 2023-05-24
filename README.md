@@ -2,6 +2,10 @@
 
 This README guide provides step-by-step instructions on how to set up a repository for practicing with Python frameworks, using a virtual environment (venv). The repository will serve as a dedicated workspace to explore and develop Dash applications.
 
+## Current Progress
+- Created home page that displays a couple of mock posts by users, and implements template inheritance for a homepage link.
+- Added a login page using flask-wtf to create a form.
+
 ## Prerequisites
 
 Before proceeding with the repository setup, ensure that you have the following installed:
