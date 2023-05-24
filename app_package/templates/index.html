@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{title}}- Flask</title>
-    </head>
-    <body>
-        {% if user %}
-        <h1>Hello, {{user.username}}!</h1>
-        {% else %}
-        <h1>Hello there!</h1>
-        {% endif %}
-        <div>
-            {% for post in posts %}
-            <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
-            {% endfor %}
-        </div>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user %}
+    <h1>Hello, {{user.username}}!</h1>
+    {% else %}
+    <h1>Hello there!</h1>
+    {% endif %}
+    <div>
+        {% for post in posts %}
+        <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+        {% endfor %}
+    </div>
+{% endblock %}
