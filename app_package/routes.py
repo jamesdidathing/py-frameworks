@@ -5,4 +5,16 @@ from app_package import app
 @app.route('/index')
 def index():
     user = {'username': 'James'}    # this is a mock user
-    return render_template('index.html', title='Home', user=user)
+
+    # Here we are creating mock posts for our page from different users
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'My favourite recipe is Lasagne :)'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The soup recipe needs more salt..'
+        }
+    ]
+    return render_template('index.html', title='Home', user=user, posts=posts)
