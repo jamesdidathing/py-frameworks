@@ -1,6 +1,6 @@
-""" Creating our database here (schema). The primary key is the ID, and the email and usernames
-are unique values. The passwords are not directly stored in the databse, but instead
-the hashes are which is a security best practice. """
+""" Creating our database here (schema). The primary key is the ID, and the email and 
+usernames are unique values. The passwords are not directly stored in the databse, but 
+instead the hashes are which is a security best practice. """
 
 from app_package import db 
 
