@@ -9,8 +9,6 @@ from app_package.models import User
 @app.route('/index')
 @login_required
 def index():
-    user = {'username': 'James'}    # this is a mock user
-
     # Here we are creating mock posts for our page from different users
     posts = [
         {
@@ -23,7 +21,7 @@ def index():
         }
     ]
     # render_template will render the html to the page
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html', title='Home', posts=posts)
 
 
 # 'POST' method is sending data/whatever from the browser to the server, 'GET' is the 
