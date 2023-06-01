@@ -1,6 +1,8 @@
 from flask import render_template, flash, redirect, url_for
+from flask_login import current_user, login_user
 from app_package import app
 from app_package.forms import LoginForm
+from app_package.models import User
 
 @app.route('/')
 @app.route('/index')
@@ -26,11 +28,14 @@ def index():
 # other way around.
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        flash('Login requested for user {}, remember_me={}'.format(
-            form.username.data, form.remember_me.data))
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
+        login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
-    else: 
-        flash('Login failed.')
     return render_template('login.html', title='Login', form=form)
