@@ -6,7 +6,11 @@
     <body>
         <div>Recipes: 
             <a href="{{ url_for('index') }}}">Home</a>
+            {% if current.user.is_anonymous %}
             <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
