@@ -4,12 +4,21 @@ instead the hashes are which is a security best practice. db.relationship initli
 posts field in Users. This is a high level view.
 
 The posts database has a foreign key which links the user_id to the id found in the 
-users database. This links the two."""
+users database. This links the two.
+
+The application needs to help flask-login with the database using the load user
+function."""
 
 from app_package import db 
+from app_package import login
+
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
