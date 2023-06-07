@@ -4,6 +4,8 @@ from werkzeug.urls import url_parse
 from app_package import app
 from app_package.forms import LoginForm
 from app_package.models import User
+from app_package import db
+from app_package.forms import RegistrationForm
 
 @app.route('/')
 @app.route('/index')
@@ -42,6 +44,22 @@ def login():
             next_page = url_for('index')
         return redirect(url_for('index'))
     return render_template('login.html', title='Login', form=form)
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('You are now registered.')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+
 
 @app.route('/logout')
 def logout():
