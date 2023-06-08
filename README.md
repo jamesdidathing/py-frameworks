@@ -5,6 +5,8 @@ This README guide provides step-by-step instructions on how to set up a reposito
 ## Current Progress
 - Created home page that displays a couple of mock posts by users, and implements template inheritance for a homepage link.
 - Added a login page using flask-wtf to create a form.
+- Using SQLite to store users in a database
+- Added registration form for new users which will utilise the database, using authentication for usernames and emails
 
 ## Prerequisites
 
