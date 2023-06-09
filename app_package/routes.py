@@ -66,7 +66,7 @@ def logout():
     return redirect(url_for('index'))
 
 # Using route with <username> is a dynamic component, so <username> will be passed to the function
-@app.route('user/<username>')
+@app.route('/user/<username>')
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404() # Returns 404 if no user found
