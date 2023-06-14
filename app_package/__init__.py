@@ -20,4 +20,4 @@ migrate = Migrate(app, db)
 
 # Routes are the different URL's that the application implements. It is not at the top 
 # because it is called from app. Models is where we designed our database
-from app_package import routes, models  # noqa: E402, F401
+from app_package import routes, models, errors  # noqa: E402, F401
