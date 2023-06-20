@@ -1,0 +1,89 @@
+2023-06-14 10:35:10,819 "(levelname)s: Website startup [in /Users/pstanis/personal_projects/py-frameworks/app_package/__init__.py:38]
+2023-06-14 10:35:34,607 "(levelname)s: Exception on /edit_profile [POST] [in /Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1968, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 920, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/app_package/routes.py", line 94, in edit_profile
+    db.session.commit()
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/scoping.py", line 553, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1906, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1221, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 1196, in _prepare_impl
+    self.session.flush()
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4154, in flush
+    self._flush(objects)
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4290, in _flush
+    with util.safe_reraise():
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 4251, in _flush
+    flush_context.execute()
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 85, in save_obj
+    _emit_update_statements(
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/orm/persistence.py", line 904, in _emit_update_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1413, in execute
+    return meth(
+           ^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 483, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1987, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2344, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1968, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/pstanis/personal_projects/py-frameworks/venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 920, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('james', '', 5)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2023-06-14 10:57:59,249 "(levelname)s: Website startup [in /Users/pstanis/personal_projects/py-frameworks/app_package/__init__.py:38]
+2023-06-20 11:17:16,175 "(levelname)s: Website startup [in /Users/pstanis/personal_projects/py-frameworks/app_package/__init__.py:38]
