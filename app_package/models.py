@@ -56,11 +56,13 @@ class User(UserMixin, db.Model):
     
     def followed_posts(self):
         # Complex query that retrieves all the posts from the users that the logged 
-        # in user (self.id) follows.
-        return Post.query.join(
+        # in user (self.id) follows. Also queries for users own posts, and unionises.
+        followed =  Post.query.join(
             followers, (followers.c.followed_id == Post.user_id)).filter(
-                followers.c.follower_id == self.id).order_by(Post.timestamp.desc())
-
+                followers.c.follower_id == self.id)
+        own = Post.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(Post.timestamp.desc())
+    
     def __repr__(self):
         """Useful for debugging, will return the username.
 
