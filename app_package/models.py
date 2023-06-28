@@ -53,6 +53,13 @@ class User(UserMixin, db.Model):
     def is_following(self, user):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
+    
+    def followed_posts(self):
+        # Complex query that retrieves all the posts from the users that the logged 
+        # in user (self.id) follows.
+        return Post.query.join(
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                followers.c.follower_id == self.id).order_by(Post.timestamp.desc())
 
     def __repr__(self):
         """Useful for debugging, will return the username.
