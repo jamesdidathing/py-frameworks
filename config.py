@@ -17,4 +17,4 @@ class Config(object):
     # This would send a signal to the application everytime the database changes
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    POST_PER_PAGE = 3
+    POSTS_PER_PAGE = 3
