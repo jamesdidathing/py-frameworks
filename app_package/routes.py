@@ -6,7 +6,9 @@ from app_package import app
 from app_package.forms import LoginForm
 from app_package.models import User, Post
 from app_package import db
-from app_package.forms import RegistrationForm, EditProfileForm, EmptyForm, PostForm
+from app_package.forms import RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm
+from app_package.email import send_password_reset_email
+
 
 @app.before_request
 def before_request():
@@ -159,3 +161,17 @@ def explore():
         if posts.has_prev else None
     return render_template("index.html", title='Explore', posts=posts.items,
                           next_url=next_url, prev_url=prev_url)
+
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('Check your email for instructions to reset your password.')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html',
+                           title='Reset Password', form=form)
