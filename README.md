@@ -7,6 +7,7 @@ This README guide provides step-by-step instructions on how to set up a reposito
 - Added a login page using flask-wtf to create a form.
 - Using SQLite to store users in a database
 - Added registration form for new users which will utilise the database, using authentication for usernames and emails
+- Added 'Edit Profile' page for users, where they can change username
 
 ## Prerequisites
 
